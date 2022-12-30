@@ -1,0 +1,21 @@
+.item {
+  max-width: 400px;
+  width: 100%;
+  max-height: 300px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image:hover {
+  transform: scale(1.03);
+  cursor: zoom-in;
+}

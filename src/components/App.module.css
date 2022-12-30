@@ -1,0 +1,26 @@
+.app {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+  padding-bottom: 24px;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(52, 86, 139, 0.5);
+  z-index: 1200;
+}
+
+.text {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 500;
+  color: #811b88;
+}
