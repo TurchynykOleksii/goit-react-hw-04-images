@@ -12,7 +12,7 @@ export const Modal = ({ onImageClick, largeImgUrl }) => {
 
     window.addEventListener('keydown', handleKeyESC);
 
-    return window.removeEventListener('keydown', handleKeyESC);
+    return () => window.removeEventListener('keydown', handleKeyESC);
   }, [onImageClick]);
 
   const handleBackdrop = event => {
