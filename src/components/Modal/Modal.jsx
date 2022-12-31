@@ -1,40 +1,34 @@
 import PropTypes from 'prop-types';
-import { Component } from 'react';
+import { useEffect } from 'react';
 import css from './Modal.module.css';
 
-export class Modal extends Component {
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyESC);
-  }
+export const Modal = ({ onImageClick, largeImgUrl }) => {
+  useEffect(() => {
+    const handleKeyESC = event => {
+      if (event.code === 'Escape') {
+        onImageClick('');
+      }
+    };
 
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyESC);
-  }
+    window.addEventListener('keydown', handleKeyESC);
 
-  handleKeyESC = event => {
-    if (event.code === 'Escape') {
-      this.props.onImageClick('');
-    }
-  };
-  handleBackdrop = event => {
+    return window.removeEventListener('keydown', handleKeyESC);
+  }, [onImageClick]);
+
+  const handleBackdrop = event => {
     if (event.target === event.currentTarget) {
-      this.props.onImageClick('');
+      onImageClick('');
     }
   };
-  render() {
-    return (
-      <div className={css.backdrop} onClick={this.handleBackdrop}>
-        <div className={css.modal}>
-          <img
-            className={css.largeImage}
-            src={this.props.largeImgUrl}
-            alt="img"
-          />
-        </div>
+
+  return (
+    <div className={css.backdrop} onClick={handleBackdrop}>
+      <div className={css.modal}>
+        <img className={css.largeImage} src={largeImgUrl} alt="img" />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 Modal.propTypes = {
   onImageClick: PropTypes.func,
